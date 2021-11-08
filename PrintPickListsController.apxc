@@ -1,0 +1,129 @@
+public with sharing class PrintPickListsController{
+
+  private ApexPages.StandardSetController standardController;
+
+    public PrintPickListsController(ApexPages.StandardSetController standardController)
+    {
+        this.standardController = standardController;
+    //    system.debug('---'+standardController.getSelected());
+    }  
+   
+    
+     public String subject {get; set;}
+     public String body { get; set;}
+     public List<Case> countlist;
+     public id oweid;
+     public Integer count{ set;get;}
+     public List<Case> contList;
+     public emailtemplate gettemplate;
+     public List<SelectOption> emailTemplateOptions {get;set;}
+     public List<OrgWideEmailAddress> lstOwea =new List<OrgWideEmailAddress>();
+     public String emailTemplate {get;set;}
+   
+      
+          
+    public void actionOnLoad(){
+          
+          countlist = (List<Case>) standardController.getSelected();
+          count = countlist.size();
+          system.debug('Number of selected records' + count);
+          emailTemplate = '';
+          emailTemplateOptions = new List<SelectOption>();
+          emailTemplateOptions.add(new SelectOption('','--Select--'));
+           
+          for(EmailTemplate et1 : [Select Id,Subject,body ,Name from EmailTemplate where folder.name = 'Classic Email Templates - Service Users'])
+            {
+              emailTemplateOptions.add(new SelectOption(et1.id,et1.name));    
+            }
+         
+    }
+    
+    public PageReference gettemplate()
+    {
+        system.debug('Selected Email Template ID : '+emailtemplate);
+      if(emailtemplate!=Null)
+      {
+          system.debug('Template Id: '+emailtemplate);
+        gettemplate= [select id,subject,body,htmlvalue from emailtemplate where id=:emailtemplate];
+        Subject=gettemplate.Subject;
+        Body=gettemplate.htmlvalue;
+          
+       }
+       else{
+         Subject='';
+         body='';
+         }
+        return null;
+    }
+
+  public void sendEmailToContacts(){
+            
+            emailtemplate et= new emailtemplate();
+            messaging.SingleEmailMessage[] emaillist = new Messaging.SingleEmailMessage[] {};  
+                 
+            contList = (List<Case>) standardController.getSelected();
+            List<Case> caselist = [select id,ContactEmail, Contact.id from Case 
+                                        where id in :contlist];
+            
+            if(emailtemplate!=Null)
+            {
+             et=[Select id,name,subject,body,folder.name from EmailTemplate where id=:emailtemplate]; 
+             lstOwea = [SELECT Id, Address FROM OrgWideEmailAddress];
+             oweId = lstOwea[0].Id;
+            }     
+
+                 if(contlist.size()==0)
+                    {
+              ApexPages.addmessage(new ApexPages.message(ApexPages.severity.ERROR,'Please select recipients'));
+                    }  
+        
+                if(emailtemplate==Null)
+                    {
+              ApexPages.addmessage(new ApexPages.message(ApexPages.severity.WARNING,'Please select email template'));
+                    }        
+             
+               for(Case c : caselist)
+                 {                      
+                 if(c.ContactEmail != Null)
+                   {
+                 
+                    Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+                    //mail.setTargetObjectId(c.Contact.id);
+                    mail.setTargetObjectId('0032u00000WlETvAAN');
+                    mail.setSaveAsActivity(true);
+                    mail.setTemplateId(et.id);
+                    mail.setWhatId(c.Id);
+                  mail.setOrgWideEmailAddressId(oweId);
+                    emaillist.add(mail);
+                    }
+                 }
+             
+              Messaging.Email[] allMails = new Messaging.Email[]{};
+            
+            if(!emaillist.isEmpty()){
+                for(Integer i = 0; i < emaillist.size(); i++){
+                    allMails.add(emaillist.get(i));
+                }
+            }
+                    
+              system.debug('All Mails ' + allMails);
+            try{
+                Messaging.SendEmailResult[] results = Messaging.sendEmail( allMails );
+                
+                if(results[0].isSuccess())
+                {
+                ApexPages.addmessage(new ApexPages.message(ApexPages.severity.CONFIRM,'Email Sent Successfully'));
+                }
+                else
+                {
+                  ApexPages.addmessage(new ApexPages.message(ApexPages.severity.ERROR,'Email failed to send'));
+                }
+                
+               
+                System.debug('---------results--------------'+results);                             
+                
+            }catch(Exception ex){
+                System.debug('---------Exception--------------'+ex);
+            }                        
+    }
+}
