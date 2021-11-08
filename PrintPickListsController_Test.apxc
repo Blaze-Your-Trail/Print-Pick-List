@@ -13,8 +13,6 @@ public class PrintPickListsController_Test {
         
         List<Case> pllist = new List<Case>();
         pllist.add(pl);
-        
-        system.debug('Player Id: '+pl.id);
 
 		Test.startTest();        
         // load the page       
