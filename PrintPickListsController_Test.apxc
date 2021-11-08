@@ -16,7 +16,7 @@ public class PrintPickListsController_Test {
 
 		Test.startTest();        
         // load the page       
-        PageReference pageRef = Page.SendMassEmailFromCase;
+   PageReference pageRef = Page.PrintPickListsFromCase;
        pageRef.getParameters().put('id',pl.Id);
         Test.setCurrentPageReference(pageRef);
 
