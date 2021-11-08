@@ -1,0 +1,45 @@
+<apex:page standardcontroller="Case" recordsetvar="cases" extensions="PrintPickListsController" tabstyle="Case" lightningStyleSheets="true" action="{!actionOnLoad}" showHeader="false" sidebar="false">
+<div align="center">
+<apex:form style="width:80%;" >
+<apex:pageBlock title="Print Pick Lists" tabstyle="Case">
+<apex:pageBlocksection >
+<div style="text-align:center;font-size:20px">
+<p>
+You have selected {!Count} {!if((count>1),'recipients' ,'recipient')}
+</p>
+</div>
+</apex:pageBlocksection>
+<hr width="100%"/>
+<apex:pageBlocksection columns="2">
+<apex:panelGrid columns="2" style="text-align:center;" cellpadding="30" cellspacing="30">
+<apex:outputLabel value="Select Template" for="selecttemplate" style="font-weight:800;size:50"/>
+<apex:selectList id="selecttemplate" value="{!emailTemplate}" size="1" >
+<apex:selectOptions value="{!emailTemplateOptions}" />
+<apex:actionSupport event="onchange" action="{!gettemplate}"  />
+</apex:selectList>
+</apex:panelGrid>
+</apex:pageBlocksection>
+<hr width="100%"/>
+<apex:panelGroup >
+<apex:pageBlocksection columns="2">
+<apex:outputLabel value="Subject" for="Subject" style="font-weight:800;"/>
+<apex:outputtext id="Subject" value="{!Subject}" escape="false" style="text-align:left;position:relative;right:80%;"/>
+</apex:pageBlocksection>
+<hr width="100%"/>
+<apex:pageBlocksection columns="2">
+<apex:outputLabel value="Body" for="Body" style="font-weight:800;"/>
+<apex:outputtext id="Body" value="{!Body}" escape="false" style="text-align:left;position:relative;right:40%;"/>
+</apex:pageBlocksection>
+<hr width="100%"/>
+</apex:panelGroup>
+<apex:pagemessages id="showmsg" />
+<apex:facet name="footer">
+<apex:outputpanel >
+<apex:commandButton value="Send Email" action="{!sendEmailToContacts}" rerender="showmsg" style="left:0px;position:relative;font-weight:800;" />
+<apex:commandButton value="Cancel" action="{!Cancel}" style="left:20px;position:relative;font-weight:800;"/>
+</apex:outputpanel>
+</apex:facet>
+</apex:pageBlock>
+</apex:form>
+</div>
+</apex:page>
