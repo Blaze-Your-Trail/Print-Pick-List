@@ -1,0 +1,49 @@
+@isTest
+public class PrintPickListsController_Test {
+    @isTest
+    static void testMethod1(){
+
+        Contact con = new contact (FirstName='Shawn', LastName='Marsh', email='jessica@blazeyourtrail.org', MobilePhone='0490490479');
+        insert con;
+
+        Case pl = new Case();
+       pl.ContactId=con.Id;
+        pl.Status='New';
+        insert pl;
+        
+        List<Case> pllist = new List<Case>();
+        pllist.add(pl);
+        
+        system.debug('Player Id: '+pl.id);
+
+		Test.startTest();        
+        // load the page       
+        PageReference pageRef = Page.SendMassEmailFromCase;
+       pageRef.getParameters().put('id',pl.Id);
+        Test.setCurrentPageReference(pageRef);
+
+        //load the controller extension
+        ApexPages.StandardSetController standardController = new ApexPages.StandardSetController(pllist);
+standardController.setSelected(pllist);
+PrintPickListsController extension = new PrintPickListsController(standardController);
+       
+        extension.actionOnLoad();
+        
+        system.assertEquals(1, extension.count, 'Count Not matched');
+       
+         extension.emailTemplate='00X2u000000pDdL';
+        extension.gettemplate();
+        
+       // system.assertEquals('Thank you for your order!', extension.subject, 'Thank you for your order!');
+        
+        extension.sendEmailToContacts();
+        
+        system.assertEquals('00X2u000000pDdL', extension.emailTemplate, 'Email Template Not matched');
+     
+      //  system.assertEquals('Email Sent Successfully', standardController., 'Message Failed');
+        Test.stopTest();
+        
+    }
+   
+
+}
