@@ -1,0 +1,181 @@
+Case Number: {!Case.CaseNumber} 
+
+Service User: {!Case.Contact}
+Agency: {!Case.BYT_Primary_Affiliation__c}			
+
+Family LGA: {!Case.BYT_Family_Residential_LGA__c}	
+
+Parent/Guardian Name or Reference: {!Case.BYT_Guardian_Name__c}			
+
+Status: {!Case.Status}			
+
+
+Date Ordered: {!Case.CreatedDate}
+Collection Date: {!Case.BYT_Collection_Booked__c}
+
+
+
+
+Birth/Due date of youngest baby: {!Case.BYT_DueBirth_Date__c}
+
+{! IF(AND( ISPICKVAL(Case.BYT_Baby_1_Age__c, ""), ISPICKVAL(Case.BYT_Baby_1_Gender__c, "")) ,"", "Baby 1 :" )} {!Case.BYT_Baby_1_Age__c} {!Case.BYT_Baby_1_Gender__c}
+
+{! IF(AND( ISPICKVAL(Case.BYT_Baby_2_Age__c, ""), ISPICKVAL(Case.BYT_Baby_2_Gender__c, "")) ,"", "Baby 2 :" )} {!Case.BYT_Baby_2_Age__c} {!Case.BYT_Baby_2_Gender__c}
+
+{! IF(AND( ISPICKVAL(Case.BYT_Baby_3_Age__c, ""), ISPICKVAL(Case.BYT_Baby_3_Gender__c, "")) ,"", "Baby 3 :" )} {!Case.BYT_Baby_3_Age__c} {!Case.BYT_Baby_3_Gender__c}
+
+{! IF(AND( ISPICKVAL(Case.BYT_Child_1_Age__c, ""), ISPICKVAL(Case.BYT_Child_1_Gender__c, ""), ISPICKVAL(Case.BYT_Child_1_Clothing_Size__c,"")) ,"", "Child 1 :" )} {!Case.BYT_Child_1_Age__c} {! IF(ISPICKVAL(Case.BYT_Child_1_Age__c, ""),"", "Years")} {!Case.BYT_Child_1_Gender__c} {! IF(ISPICKVAL(Case.BYT_Child_1_Clothing_Size__c, ""),"", IF(ISPICKVAL(Case.BYT_Child_1_Clothing_Size__c, "No Clothing Required"),"","Size" ))} {!Case.BYT_Child_1_Clothing_Size__c}
+
+{! IF(AND( ISPICKVAL(Case.BYT_Child_2_Age__c, ""), ISPICKVAL(Case.BYT_Child_2_Gender__c, ""), ISPICKVAL(Case.BYT_Child_2_Clothing_Size__c,"")) ,"", "Child 2 :" )} {!Case.BYT_Child_2_Age__c} {! IF(ISPICKVAL(Case.BYT_Child_2_Age__c, ""),"", "Years")} {!Case.BYT_Child_2_Gender__c} {! IF(ISPICKVAL(Case.BYT_Child_2_Clothing_Size__c, ""),"", IF(ISPICKVAL(Case.BYT_Child_2_Clothing_Size__c, "No Clothing Required"),"","Size" ))} {!Case.BYT_Child_2_Clothing_Size__c}
+
+{! IF(AND( ISPICKVAL(Case.BYT_Child_3_Age__c, ""), ISPICKVAL(Case.BYT_Child_3_Gender__c, ""), ISPICKVAL(Case.BYT_Child_3_Clothing_Size__c,"")) ,"", "Child 3 :" )} {!Case.BYT_Child_3_Age__c} {! IF(ISPICKVAL(Case.BYT_Child_3_Age__c, ""),"", "Years")} {!Case.BYT_Child_3_Gender__c} {! IF(ISPICKVAL(Case.BYT_Child_3_Clothing_Size__c, ""),"", IF(ISPICKVAL(Case.BYT_Child_3_Clothing_Size__c, "No Clothing Required"),"","Size" ))} {!Case.BYT_Child_3_Clothing_Size__c}
+
+{! IF(AND( ISPICKVAL(Case.BYT_Child_4_Age__c, ""), ISPICKVAL(Case.BYT_Child_4_Gender__c, ""), ISPICKVAL(Case.BYT_Child_4_Clothing_Size__c,"")) ,"", "Child 4 :" )} {!Case.BYT_Child_4_Age__c} {! IF(ISPICKVAL(Case.BYT_Child_4_Age__c, ""),"", "Years")} {!Case.BYT_Child_4_Gender__c} {! IF(ISPICKVAL(Case.BYT_Child_4_Clothing_Size__c, ""),"", IF(ISPICKVAL(Case.BYT_Child_4_Clothing_Size__c, "No Clothing Required"),"","Size" ))} {!Case.BYT_Child_4_Clothing_Size__c}
+
+{! IF(AND( ISPICKVAL(Case.BYT_Child_5_Age__c, ""), ISPICKVAL(Case.BYT_Child_5_Gender__c, ""), ISPICKVAL(Case.BYT_Child_5_Clothing_Size__c,"")) ,"", "Child 5 :" )} {!Case.BYT_Child_5_Age__c} {! IF(ISPICKVAL(Case.BYT_Child_5_Age__c, ""),"", "Years")} {!Case.BYT_Child_5_Gender__c} {! IF(ISPICKVAL(Case.BYT_Child_5_Clothing_Size__c, ""),"", IF(ISPICKVAL(Case.BYT_Child_5_Clothing_Size__c, "No Clothing Required"),"","Size" ))} {!Case.BYT_Child_5_Clothing_Size__c}
+
+{! IF(AND( ISPICKVAL(Case.BYT_Child_6_Age__c, ""), ISPICKVAL(Case.BYT_Child_6_Gender__c, ""), ISPICKVAL(Case.BYT_Child_6_Clothing_Size__c,"")) ,"", "Child 6 : " )}{!Case.BYT_Child_6_Age__c} {! IF(ISPICKVAL(Case.BYT_Child_6_Age__c, ""),"", "Years")} {!Case.BYT_Child_6_Gender__c} {! IF(ISPICKVAL(Case.BYT_Child_6_Clothing_Size__c, ""),"", IF(ISPICKVAL(Case.BYT_Child_6_Clothing_Size__c, "No Clothing Required"),"","Size" ))} {!Case.BYT_Child_6_Clothing_Size__c}
+
+
+
+{!IF(ISBLANK(Case.BYT_Bassinet__c),Null,text(Case.BYT_Bassinet__c) + " x Bassinet")}
+{!IF(ISBLANK(Case.BYT_Cot__c),Null,text(Case.BYT_Cot__c) + " x Cot")}
+{!IF(ISBLANK(Case.BYT_Cot_Mattress__c),Null,text(Case.BYT_Cot_Mattress__c) + " x Cot Mattress")}
+{!IF(ISBLANK(Case.BYT_Port_a_cot__c),Null,text(Case.BYT_Port_a_cot__c) + " x Port-a-cot")}
+{!IF(ISBLANK(Case.BYT_ToddlerBed__c),Null,text(Case.BYT_ToddlerBed__c) + " x Toddler Bed")}
+{!IF(ISBLANK(Case.BYT_Child_1_Weight__c),Null,text(Case.BYT_Child_1_Weight__c) + " x Child 1 Weight")}
+{!IF(ISBLANK(Case.BYT_Child_2_Weight__c),Null,text(Case.BYT_Child_2_Weight__c) + " x Child 2 Weight")}
+{!IF(ISBLANK(Case.BYT_Child_3_Weight__c),Null,text(Case.BYT_Child_3_Weight__c) + " x Child 3 Weight")}
+{!IF(ISBLANK(Case.BYT_Pram_6mth__c),Null,text(Case.BYT_Pram_6mth__c) + " x Pram - 6mth+")}
+{!IF(ISBLANK(Case.BYT_Pram_Double__c),Null,text(Case.BYT_Pram_Double__c) + " x Pram - Double")}
+{!IF(ISBLANK(Case.BYT_Pram_Single__c),Null,text(Case.BYT_Pram_Single__c) + " x Pram - Single")}
+{!IF(ISBLANK(Case.BYT_Pram_Skateboard__c),Null,text(Case.BYT_Pram_Skateboard__c) + " x Pram - Skateboard")}
+{!IF(ISBLANK(Case.BYT_Pram_Triple__c),Null,text(Case.BYT_Pram_Triple__c) + " x Pram - Triple Pram")}
+{!Case.BYT_pram_requirements__c} 
+{!IF(ISBLANK(Case.BYT_Booster_5y__c),Null,text(Case.BYT_Booster_5y__c) + " x Car Seat - Booster - 5y+")}
+{!IF(ISBLANK(Case.BYT_Capsule_0_6__c),Null,text(Case.BYT_Capsule_0_6__c) + " x Car Seat - Capsule (0-6m)")}
+{!IF(ISBLANK(Case.BYT_CarSeat_FF2y__c),Null,text(Case.BYT_CarSeat_FF2y__c) + " x Car Seat - Forward Facing 2y+")}
+{!IF(ISBLANK(Case.BYT_CarSeat_Newborn__c),Null,text(Case.BYT_CarSeat_Newborn__c) + " x Car Seat - Newborn (0-4y)")}
+{!IF(ISBLANK(Case.BYT_Baby_Bath__c),Null,text(Case.BYT_Baby_Bath__c) + " x Baby Bath")}
+{!IF(ISBLANK(Case.BYT_Baby_Carrier__c),Null,text(Case.BYT_Baby_Carrier__c) + " x Baby Carrier")}
+{!IF(ISBLANK(Case.BYT_Bouncer_Rocker__c),Null,text(Case.BYT_Bouncer_Rocker__c) + " x Bouncer / Rocker")}
+{!IF(ISBLANK(Case.BYT_Change_Table__c),Null,text(Case.BYT_Change_Table__c) + " x Change Table")}
+{!IF(ISBLANK(Case.BYT_First_Aid_Kit__c),Null,text(Case.BYT_First_Aid_Kit__c) + " x First Aid Kit")}
+{!IF(ISBLANK(Case.BYT_Highchair__c),Null,text(Case.BYT_Highchair__c) + " x Highchair")}
+{!IF(ISBLANK(Case.BYT_Playpen__c),Null,text(Case.BYT_Playpen__c) + " x Playpen")}
+{!IF(ISBLANK(Case.BYT_Safety_Gate__c),Null,text(Case.BYT_Safety_Gate__c) + " x Safety Gate")}
+{!IF(ISBLANK(Case.BYT_Safety_Kit__c),Null,text(Case.BYT_Safety_Kit__c) + " x Safety Kit")}
+{!IF(ISBLANK(Case.BYT_Bassinet_Boy__c),Null,text(Case.BYT_Bassinet_Boy__c) + " x Linen - Bassinet - Boy")}
+{!IF(ISBLANK(Case.BYT_Bassinet_Girl__c),Null,text(Case.BYT_Bassinet_Girl__c) + " x Linen - Bassinet - Girl")}
+{!IF(ISBLANK(Case.BYT_Bassinet_Unisex__c),Null,text(Case.BYT_Bassinet_Unisex__c) + " x Linen - Bassinet - Unisex")}
+{!IF(ISBLANK(Case.BYT_Blanket_cot__c),Null,text(Case.BYT_Blanket_cot__c) + " x Linen - Blanket - Cot")}
+{!IF(ISBLANK(Case.BYT_Blanket_SingleBed__c),Null,text(Case.BYT_Blanket_SingleBed__c) + " x Linen - Blanket - Single Bed")}
+{!IF(ISBLANK(Case.BYT_Cot_Boy__c),Null,text(Case.BYT_Cot_Boy__c) + " x Linen - Cot - Boy")}
+{!IF(ISBLANK(Case.BYT_Cot_Girl__c),Null,text(Case.BYT_Cot_Girl__c) + " x Linen - Cot - Girl")}
+{!IF(ISBLANK(Case.BYT_Cot_Unisex__c),Null,text(Case.BYT_Cot_Unisex__c) + " x Linen - Cot - Unisex")}
+{!IF(ISBLANK(Case.BYT_SingleBed_Boy__c),Null,text(Case.BYT_SingleBed_Boy__c) + " x Linen - Single Bed - Boy")}
+{!IF(ISBLANK(Case.BYT_SingleBed_Girl__c),Null,text(Case.BYT_SingleBed_Girl__c) + " x Linen - Single Bed - Girl")}
+{!IF(ISBLANK(Case.BYT_SleepingBags_1_3y__c),Null,text(Case.BYT_SleepingBags_1_3y__c) + " x Linen - Sleeping Bags 1-3yo")}
+{!IF(ISBLANK(Case.BYT_Swaddles0_1__c),Null,text(Case.BYT_Swaddles0_1__c) + " x Linen - Sleeping Swaddles/Sacks 0-1")}
+{!IF(ISBLANK(Case.BYT_Linen_Special_Order__c),Null,text(Case.BYT_Linen_Special_Order__c) + " x Linen - Special Order")}
+{!IF(ISBLANK(Case.BYT_Nappies_cloth__c),Null,text(Case.BYT_Nappies_cloth__c) + " x Nappies - Cloth")}
+{!IF(ISBLANK(Case.BYT_Nappies_Premmie__c),Null,text(Case.BYT_Nappies_Premmie__c) + " x Nappies - Premmie")}
+{!IF(ISBLANK(Case.BYT_Nappies_Newborn__c),Null,text(Case.BYT_Nappies_Newborn__c) + " x Nappies - Newborn up to 5kg")}
+{!IF(ISBLANK(Case.BYT_Nappies_Infant__c),Null,text(Case.BYT_Nappies_Infant__c) + " x Nappies - Infant 4-8kg")}
+{!IF(ISBLANK(Case.BYT_Nappies_Crawler__c),Null,text(Case.BYT_Nappies_Crawler__c) + " x Nappies - Crawler 6 to 11kg")}
+{!IF(ISBLANK(Case.BYT_Nappies_Jnr__c),Null,text(Case.BYT_Nappies_Jnr__c) + " x Nappies - Junior 16kg+")}
+{!IF(ISBLANK(Case.BYT_Nappies_Toddler__c),Null,text(Case.BYT_Nappies_Toddler__c) + " x Nappies - Toddler 13-18kg")}
+{!IF(ISBLANK(Case.BYT_Nappies_Walker__c),Null,text(Case.BYT_Nappies_Walker__c) + " x Nappies - Walker 10-15kg")}
+{!IF(ISBLANK(Case.BYT_Pullups__c),Null,text(Case.BYT_Pullups__c) + " x Nappies - Pullups 4yo")}
+{!IF(ISBLANK(Case.BYT_Wipes__c),Null,text(Case.BYT_Wipes__c) + " x Nappies - Wipes")}
+{!IF(ISBLANK(Case.BYT_Nappy_Bag__c),Null,text(Case.BYT_Nappy_Bag__c) + " x Nappies - Nappy Bag")}{!IF(ISBLANK(Case.BYT_Baby_Bottles__c),Null,text(Case.BYT_Baby_Bottles__c) + " x Baby Bottles")}
+{!IF(ISBLANK(Case.BYT_Breast_Pump_Electric__c),Null,text(Case.BYT_Breast_Pump_Electric__c) + " x Breast Pump - Electric (New)")}
+{!IF(ISBLANK(Case.BYT_Breast_Pump_Manual__c),Null,text(Case.BYT_Breast_Pump_Manual__c) + " x Breast Pump - Manual Kit")}
+{!IF(ISBLANK(Case.BYT_Breastfeeding_pack__c),Null,text(Case.BYT_Breastfeeding_pack__c) + " x Breastfeeding Pack")}
+{!IF(ISBLANK(Case.BYT_Breastfeeding_pillow__c),Null,text(Case.BYT_Breastfeeding_pillow__c) + " x Breastfeeding Pillow")}
+{!IF(ISBLANK(Case.BYT_Feeding_Pack_12m__c),Null,text(Case.BYT_Feeding_Pack_12m__c) + " x Feeding Pack - 12m+")}
+{!IF(ISBLANK(Case.BYT_Feeding_4_12m__c),Null,text(Case.BYT_Feeding_4_12m__c) + " x Feeding Pack - 4-12m")}
+{!IF(ISBLANK(Case.BYT_Formula__c),Null,text(Case.BYT_Formula__c) + " x Formula")}
+{!IF(ISBLANK(Case.BYT_Steriliser__c),Null,text(Case.BYT_Steriliser__c) + " x Steriliser")}
+{!IF(ISBLANK(Case.BYT_SchoolPack_10yr__c),Null,text(Case.BYT_SchoolPack_10yr__c) + " x School Pack - 10yr+")}
+{!IF(ISBLANK(Case.BYT_SchoolPack_6_9yo__c),Null,text(Case.BYT_SchoolPack_6_9yo__c) + " x School Pack - 6-9yo")}
+{!IF(ISBLANK(Case.BYT_SchoolPack_Childcare__c),Null,text(Case.BYT_SchoolPack_Childcare__c) + " x School Pack - Childcare")}
+{!IF(ISBLANK(Case.BYT_SchoolPack_Preschool__c),Null,text(Case.BYT_SchoolPack_Preschool__c) + " x School Pack - Preschool/Kindy 4-6y")}
+{!IF(ISBLANK(Case.BYT_Toiletries_Baby__c),Null,text(Case.BYT_Toiletries_Baby__c) + " x Toiletries - Baby")}
+{!IF(ISBLANK(Case.BYT_Toiletries_Child_3__c),Null,text(Case.BYT_Toiletries_Child_3__c) + " x Toiletries - Children's 3+")}
+{!IF(ISBLANK(Case.BYT_Toiletries_Maternity__c),Null,text(Case.BYT_Toiletries_Maternity__c) + " x Toiletries - Maternity")}
+{!IF(ISBLANK(Case.BYT_Toiletries_Mens__c),Null,text(Case.BYT_Toiletries_Mens__c) + " x Toiletries - Men's")}
+{!IF(ISBLANK(Case.BYT_Toiletries_Teens__c),Null,text(Case.BYT_Toiletries_Teens__c) + " x Toiletries - Teens 10+")}
+{!IF(ISBLANK(Case.BYT_Toiletries_Womens__c),Null,text(Case.BYT_Toiletries_Womens__c) + " x Toiletries - Women's")}
+{!IF(ISBLANK(Case.BYT_Activity_Mat_Boy__c),Null,text(Case.BYT_Activity_Mat_Boy__c) + " x Activity Mat - Boy")}
+{!IF(ISBLANK(Case.BYT_Activity_Mat_Girl__c),Null,text(Case.BYT_Activity_Mat_Girl__c) + " x Activity Mat - Girl")}
+{!IF(ISBLANK(Case.BYT_Activity_Mat_Unisex__c),Null,text(Case.BYT_Activity_Mat_Unisex__c) + " x Activity Mat - Unisex")}
+{!IF(ISBLANK(Case.00N2u000000rGMS),Null,text(Case.00N2u000000rGMS) + " x Baby 1 Toys")}
+{!IF(ISBLANK(Case.00N2u000000rGMX),Null,text(Case.00N2u000000rGMX) + " x Baby 2 Toys")}
+{!IF(ISBLANK(Case.00N2u000000rGMc),Null,text(Case.00N2u000000rGMc) + " x Baby 3 Toys")}
+{!IF(ISBLANK(Case.BYT_Toys_0_18mBoy__c),Null,text(Case.BYT_Toys_0_18mBoy__c) + " x Toys - 0-18mth - Boy")}
+{!IF(ISBLANK(Case.BYT_Toys_0_18mGirl__c),Null,text(Case.BYT_Toys_0_18mGirl__c) + " x Toys - 0-18mth - Girl")}
+{!IF(ISBLANK(Case.BYT_Toys_0_18mUnisex__c),Null,text(Case.BYT_Toys_0_18mUnisex__c) + " x Toys - 0-18mth - Unisex")}
+{!IF(ISBLANK(Case.BYT_Toys_10yBoy__c),Null,text(Case.BYT_Toys_10yBoy__c) + " x Toys - 10y+ boy")}
+{!IF(ISBLANK(Case.BYT_Toys_10yGirl__c),Null,text(Case.BYT_Toys_10yGirl__c) + " x Toys - 10y+ Girl")}
+{!IF(ISBLANK(Case.BYT_Toys_18m_3yBoy__c),Null,text(Case.BYT_Toys_18m_3yBoy__c) + " x Toys - 18m-3y - Boy")}
+{!IF(ISBLANK(Case.BYT_Toys_18m_3yGirl__c),Null,text(Case.BYT_Toys_18m_3yGirl__c) + " x Toys - 18m-3y - Girl")}
+{!IF(ISBLANK(Case.BYT_Toys_3_5yBoy__c),Null,text(Case.BYT_Toys_3_5yBoy__c) + " x Toys - 3-5y - Boy")}
+{!IF(ISBLANK(Case.BYT_Toys_3_5yGirl__c),Null,text(Case.BYT_Toys_3_5yGirl__c) + " x Toys - 3-5y - Girl")}
+{!IF(ISBLANK(Case.BYT_Toys_6_9yBoy__c),Null,text(Case.BYT_Toys_6_9yBoy__c) + " x Toys - 6-9y Boy")}
+{!IF(ISBLANK(Case.BYT_Toys_6_9yGirl__c),Null,text(Case.BYT_Toys_6_9yGirl__c) + " x Toys - 6-9y Girl")}
+{!IF(ISBLANK(Case.BYT_Toys_Christmas__c),Null,text(Case.BYT_Toys_Christmas__c) + " x Toys - Christmas Gifts")}
+{!IF(ISBLANK(Case.BYT_Toys_Special__c),Null,text(Case.BYT_Toys_Special__c) + " x Toys - Special Order")}
+{!IF(ISBLANK(Case.BYT_Books_0_18__c),Null,text(Case.BYT_Books_0_18__c) + " x Books - 0-18m")}
+{!IF(ISBLANK(Case.BYT_Books_10__c),Null,text(Case.BYT_Books_10__c) + " x Books - 10+")}
+{!IF(ISBLANK(Case.BYT_Books_18_3__c),Null,text(Case.BYT_Books_18_3__c) + " x Books - 18mth-3yrs")}
+{!IF(ISBLANK(Case.BYT_Books_3_5__c),Null,text(Case.BYT_Books_3_5__c) + " x Books - 3-5y")}
+{!IF(ISBLANK(Case.BYT_Books_6_9__c),Null,text(Case.BYT_Books_6_9__c) + " x Books - 6-9y")}
+{!IF(ISBLANK(Case.Clothes_Boy_Premature__c),Null,text(Case.Clothes_Boy_Premature__c) + " x Clothes - Boy Premature")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_0_6_Sum__c),Null,text(Case.BYT_Clothes_Boy_0_6_Sum__c) + " x Clothes - Boy 0-6m Summer")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_0_6_Win__c),Null,text(Case.BYT_Clothes_Boy_0_6_Win__c) + " x Clothes - Boy 0-6m Winter")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_6_12_Sum__c),Null,text(Case.BYT_Clothes_Boy_6_12_Sum__c) + " x Clothes - Boy 6-12m Summer")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_6_12_Win__c),Null,text(Case.BYT_Clothes_Boy_6_12_Win__c) + " x Clothes - Boy 6-12m Winter")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_Mixed__c),Null,text(Case.BYT_Clothes_Boy_Mixed__c) + " x Clothes - Boy Mixed Sizes")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_00_Sum__c),Null,text(Case.BYT_Clothes_Boy_00_Sum__c) + " x Clothes - Boy 00 - Summer")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_00_Win__c),Null,text(Case.BYT_Clothes_Boy_00_Win__c) + " x Clothes - Boy 00 - Winter")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_1__c),Null,text(Case.BYT_Clothes_Boy_1__c) + " x Clothes - Boy Size 1")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_2__c),Null,text(Case.BYT_Clothes_Boy_2__c) + " x Clothes - Boy Size 2")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_3__c),Null,text(Case.BYT_Clothes_Boy_3__c) + " x Clothes - Boy Size 3")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_4__c),Null,text(Case.BYT_Clothes_Boy_4__c) + " x Clothes - Boy Size 4")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_5__c),Null,text(Case.BYT_Clothes_Boy_5__c) + " x Clothes - Boy Size 5")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_6__c),Null,text(Case.BYT_Clothes_Boy_6__c) + " x Clothes - Boy Size 6")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_7__c),Null,text(Case.BYT_Clothes_Boy_7__c) + " x Clothes - Boy Size 7")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_8__c),Null,text(Case.BYT_Clothes_Boy_8__c) + " x Clothes - Boy Size 8")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_9__c),Null,text(Case.BYT_Clothes_Boy_9__c) + " x Clothes - Boy Size 9")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_10__c),Null,text(Case.BYT_Clothes_Boy_10__c) + " x Clothes - Boy Size 10")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_12__c),Null,text(Case.BYT_Clothes_Boy_12__c) + " x Clothes - Boy Size 12")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_14__c),Null,text(Case.BYT_Clothes_Boy_14__c) + " x Clothes - Boy Size 14")}
+{!IF(ISBLANK(Case.BYT_Clothes_Boy_16__c),Null,text(Case.BYT_Clothes_Boy_16__c) + " x Clothes - Boy Size 16")}
+{!IF(ISBLANK(Case.BYT_Clothes_Unisex_0_6_Sum__c),Null,text(Case.BYT_Clothes_Unisex_0_6_Sum__c) + " x Clothes - Unisex 0-6m Summer")}
+{!IF(ISBLANK(Case.BYT_Clothes_Unisex_0_6_Wint__c),Null,text(Case.BYT_Clothes_Unisex_0_6_Wint__c) + " x Clothes - Unisex 0-6m Winter")}
+{!IF(ISBLANK(Case.Clothes_Girl_Premature__c),Null,text(Case.Clothes_Girl_Premature__c) + " x Clothes - Girl Premature")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_0_6_Sum__c),Null,text(Case.BYT_Clothes_Girl_0_6_Sum__c) + " x Clothes - Girl 0-6m Summer")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_0_6_Win__c),Null,text(Case.BYT_Clothes_Girl_0_6_Win__c) + " x Clothes - Girl 0-6m Winter")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_6_12_Sum__c),Null,text(Case.BYT_Clothes_Girl_6_12_Sum__c) + " x Clothes - Girl 6-12m Summer")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_6_12_Win__c),Null,text(Case.BYT_Clothes_Girl_6_12_Win__c) + " x Clothes - Girl 6-12m Winter")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_mixed__c),Null,text(Case.BYT_Clothes_Girl_mixed__c) + " x Clothes - Girl Mixed Sizes")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_00_Sum__c),Null,text(Case.BYT_Clothes_Girl_00_Sum__c) + " x Clothes - Girl 00 - Summer")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_00_Win__c),Null,text(Case.BYT_Clothes_Girl_00_Win__c) + " x Clothes - Girl 00 - Winter")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_1__c),Null,text(Case.BYT_Clothes_Girl_1__c) + " x Clothes - Girl Size 1")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_2__c),Null,text(Case.BYT_Clothes_Girl_2__c) + " x Clothes - Girl Size 2")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_3__c),Null,text(Case.BYT_Clothes_Girl_3__c) + " x Clothes - Girl Size 3")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_4__c),Null,text(Case.BYT_Clothes_Girl_4__c) + " x Clothes - Girl Size 4")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_5__c),Null,text(Case.BYT_Clothes_Girl_5__c) + " x Clothes - Girl Size 5")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_6__c),Null,text(Case.BYT_Clothes_Girl_6__c) + " x Clothes - Girl Size 6")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_7__c),Null,text(Case.BYT_Clothes_Girl_7__c) + " x Clothes - Girl Size 7")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_8__c),Null,text(Case.BYT_Clothes_Girl_8__c) + " x Clothes - Girl Size 8")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_9__c),Null,text(Case.BYT_Clothes_Girl_9__c) + " x Clothes - Girl Size 9")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_10__c),Null,text(Case.BYT_Clothes_Girl_10__c) + " x Clothes - Girl Size 10")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_12__c),Null,text(Case.BYT_Clothes_Girl_12__c) + " x Clothes - Girl Size 12")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_14__c),Null,text(Case.BYT_Clothes_Girl_14__c) + " x Clothes - Girl Size 14")}
+{!IF(ISBLANK(Case.BYT_Clothes_Girl_16__c),Null,text(Case.BYT_Clothes_Girl_16__c) + " x Clothes - Girl Size 16")}
+{!IF(ISBLANK(Case.BYT_Clothes_School_Uniform__c),Null,text(Case.BYT_Clothes_School_Uniform__c) + " x Clothes - School Uniform")}
+{!IF(ISBLANK(Case.BYT_Clothes_Shoe_Pack__c),Null,text(Case.BYT_Clothes_Shoe_Pack__c) + " x Clothes - Shoe Pack")}
+{!Case.Description}
+Notes: {!Case.BYT_Request_other_items__c}
